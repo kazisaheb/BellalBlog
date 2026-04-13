@@ -410,9 +410,8 @@ function PostCard({ post }: { post: Post }) {
   );
 }
 
-function BlogPost() {
+function BlogPost({ posts }: { posts: Post[] }) {
   const { slug } = useParams<{ slug: string }>();
-  const posts = initialPosts;
   const navigate = useNavigate();
   
   const post = posts.find(p => p.slug === slug);
@@ -682,12 +681,12 @@ function ContactForm() {
 }
 
 // Admin Dashboard
-function AdminDashboard({ onLogout }: { onLogout: () => void }) {
+function AdminDashboard({ onLogout, posts, setPosts }: { 
+  onLogout: () => void, 
+  posts: Post[], 
+  setPosts: React.Dispatch<React.SetStateAction<Post[]>> 
+}) {
   const [activeTab, setActiveTab] = useState<'posts' | 'pages'>('posts');
-  const [posts, setPosts] = useState<Post[]>(() => {
-    const saved = localStorage.getItem('blogPosts');
-    return saved ? JSON.parse(saved) : initialPosts;
-  });
   const [pages, setPages] = useState<Page[]>(() => {
     const saved = localStorage.getItem('blogPages');
     return saved ? JSON.parse(saved) : initialPages;
@@ -698,8 +697,8 @@ function AdminDashboard({ onLogout }: { onLogout: () => void }) {
   
   // Persist to localStorage
   useEffect(() => {
-    localStorage.setItem('blogPosts', JSON.stringify(posts));
-  }, [posts]);
+    localStorage.setItem('blogPages', JSON.stringify(pages));
+  }, [pages]);
   
   useEffect(() => {
     localStorage.setItem('blogPages', JSON.stringify(pages));
@@ -1198,8 +1197,7 @@ function HomePage({ posts }: { posts: Post[] }) {
   );
 }
 
-function BlogList() {
-  const [posts] = useState<Post[]>(initialPosts);
+function BlogList({ posts }: { posts: Post[] }) {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
   
@@ -1267,6 +1265,24 @@ export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(() => {
     return localStorage.getItem('isAdminLoggedIn') === 'true';
   });
+  
+  const [allPosts, setAllPosts] = useState<Post[]>(() => {
+    const savedPosts = localStorage.getItem('bellalblog_posts');
+    if (savedPosts) {
+      try {
+        return JSON.parse(savedPosts);
+      } catch (e) {
+        return initialPosts;
+      }
+    }
+    return initialPosts;
+  });
+
+  // Sync posts to localStorage whenever they change
+  useEffect(() => {
+    localStorage.setItem('bellalblog_posts', JSON.stringify(allPosts));
+  }, [allPosts]);
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
   const login = (email: string, password: string): boolean => {
@@ -1299,7 +1315,7 @@ export default function App() {
                 toggleMobileMenu={toggleMobileMenu}
                 isMobileMenuOpen={mobileMenuOpen}
               />
-              <HomePage posts={initialPosts} />
+              <HomePage posts={allPosts} />
               <Footer />
             </>
           } />
@@ -1312,7 +1328,7 @@ export default function App() {
                 toggleMobileMenu={toggleMobileMenu}
                 isMobileMenuOpen={mobileMenuOpen}
               />
-              <BlogList />
+              <BlogList posts={allPosts} />
               <Footer />
             </>
           } />
@@ -1325,7 +1341,7 @@ export default function App() {
                 toggleMobileMenu={toggleMobileMenu}
                 isMobileMenuOpen={mobileMenuOpen}
               />
-              <BlogPost />
+              <BlogPost posts={allPosts} />
               <Footer />
             </>
           } />
@@ -1390,7 +1406,11 @@ export default function App() {
           {/* Protected Admin Route */}
           <Route path="/admin" element={
             isLoggedIn ? (
-              <AdminDashboard onLogout={logout} />
+              <AdminDashboard 
+                onLogout={logout} 
+                posts={allPosts} 
+                setPosts={setAllPosts} 
+              />
             ) : (
               <Navigate to="/login" replace />
             )
