@@ -279,7 +279,9 @@ function Header({ isLoggedIn, onLogout, toggleMobileMenu, isMobileMenuOpen }: {
               </Link>
             )}
           </nav>
-            
+
+          
+          <div className="flex items-center gap-4">  
             {isLoggedIn && (
               <button 
                 onClick={onLogout}
