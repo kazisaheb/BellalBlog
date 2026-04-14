@@ -1098,7 +1098,6 @@ function HomePage({ posts }: { posts: Post[] }) {
   const recentPosts = publishedPosts.slice(1, 7);
   
   return (     
-      {/* Latest Posts */}
       <div className="max-w-7xl mx-auto px-6 pt-20 pb-24">
         <div className="flex items-end justify-between mb-8">
           <div>
