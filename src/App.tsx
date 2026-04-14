@@ -375,6 +375,7 @@ function Footer() {
 function PostCard({ post }: { post: Post }) {
   return (
     <div className="group bg-white border border-slate-200 rounded-3xl overflow-hidden hover:border-emerald-200 transition-all hover:shadow-xl">
+      <Link to={`/post/${post.slug}`}
       <div className="relative">
         <img 
           src={post.image} 
@@ -397,15 +398,9 @@ function PostCard({ post }: { post: Post }) {
         <p className="text-slate-600 line-clamp-3 text-[15px] mb-7">
           {post.excerpt}
         </p>
-        
-        <Link 
-          to={`/post/${post.slug}`}
-          className="inline-flex items-center gap-2 text-emerald-600 hover:text-emerald-700 text-sm font-medium group-hover:gap-3 transition-all"
-        >
-          Read the article 
-          <span className="text-lg leading-none">→</span>
-        </Link>
+
       </div>
+      </Link>
     </div>
   );
 }
