@@ -211,7 +211,7 @@ const initialPages: Page[] = [
     title: 'About Us',
     slug: 'about',
     content: `<h2>Our Story</h2>
-<p>BellalBlog was founded in 2023 with a simple mission: to share thoughtful perspectives on technology, design, culture, and the human experience.</p>
+<p>WeCare was founded in 2023 with a simple mission: to share thoughtful perspectives on technology, design, culture, and the human experience.</p>
 <p>What began as personal reflections has grown into a community of curious minds exploring what it means to live meaningfully in the digital age.</p>
 <h3>What We Believe</h3>
 <p>We believe in depth over breadth. In taking the time to explore ideas thoroughly rather than reacting to the news cycle. In thoughtful criticism that seeks to understand before judging.</p>
@@ -261,7 +261,7 @@ function Header({ isLoggedIn, onLogout, toggleMobileMenu, isMobileMenuOpen }: {
             <Link to="/" className="flex items-center gap-3">
               <div className="w-9 h-9 bg-emerald-600 rounded-2xl flex items-center justify-center text-white font-bold text-2xl">B</div>
               <div>
-                <div className="font-semibold tracking-tighter text-3xl text-slate-900">bellalblog</div>
+                <div className="font-semibold tracking-tighter text-3xl text-slate-900">WeCare</div>
                 <div className="text-[10px] text-slate-400 -mt-1">thoughts that matter</div>
               </div>
             </Link>
@@ -338,12 +338,12 @@ function Footer() {
         <div className="md:col-span-5">
           <div className="flex items-center gap-3 mb-6">
             <div className="w-8 h-8 bg-white rounded-2xl flex items-center justify-center text-emerald-600 font-bold">B</div>
-            <div className="text-white font-semibold tracking-tighter text-4xl">bellalblog</div>
+            <div className="text-white font-semibold tracking-tighter text-4xl">WeCare</div>
           </div>
           <p className="max-w-xs text-white/60 text-[15px]">
             Independent writing on technology, thoughtful design, and living with intention in the modern world.
           </p>
-          <div className="mt-8 text-xs text-white/40">© {new Date().getFullYear()} BellalBlog. All rights reserved.</div>
+          <div className="mt-8 text-xs text-white/40">© {new Date().getFullYear()} WeCare. All rights reserved.</div>
         </div>
         
         <div className="md:col-span-3">
@@ -579,7 +579,7 @@ function ContactForm() {
         body: JSON.stringify({
           ...formData,
           _to: 'bellal24hr@gmail.com',
-          _subject: `BellalBlog Contact: ${formData.subject}`
+          _subject: `WeCare Contact: ${formData.subject}`
         })
       });
 
@@ -788,7 +788,7 @@ function AdminDashboard({ onLogout, posts, setPosts }: {
             </div>
             <div>
               <div className="font-semibold text-2xl tracking-tighter">Admin Dashboard</div>
-              <div className="text-xs text-emerald-400/70">BellalBlog Content Management</div>
+              <div className="text-xs text-emerald-400/70">WeCare Content Management</div>
             </div>
           </div>
           
@@ -1267,7 +1267,7 @@ export default function App() {
   });
   
   const [allPosts, setAllPosts] = useState<Post[]>(() => {
-    const savedPosts = localStorage.getItem('bellalblog_posts');
+    const savedPosts = localStorage.getItem('WeCare_posts');
     if (savedPosts) {
       try {
         return JSON.parse(savedPosts);
@@ -1280,7 +1280,7 @@ export default function App() {
 
   // Sync posts to localStorage whenever they change
   useEffect(() => {
-    localStorage.setItem('bellalblog_posts', JSON.stringify(allPosts));
+    localStorage.setItem('WeCare_posts', JSON.stringify(allPosts));
   }, [allPosts]);
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -1453,7 +1453,7 @@ function LoginPage({ login, isLoggedIn }: { login: (email: string, password: str
           <div className="flex items-center gap-3">
             <div className="text-white text-6xl font-bold tracking-tighter">B</div>
             <div className="text-white">
-              <div className="text-4xl font-semibold tracking-[-2px]">BELLALBLOG</div>
+              <div className="text-4xl font-semibold tracking-[-2px]">WeCare</div>
               <div className="text-xs text-white/30 -mt-1">ADMIN</div>
             </div>
           </div>
