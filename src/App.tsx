@@ -279,18 +279,6 @@ function Header({ isLoggedIn, onLogout, toggleMobileMenu, isMobileMenuOpen }: {
               </Link>
             )}
           </nav>
-
-          <div className="flex items-center gap-4">
-            <div className="relative hidden sm:block">
-              <input 
-                type="text" 
-                placeholder="Search posts..." 
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="bg-zinc-100 border border-transparent focus:border-emerald-200 w-72 pl-10 py-2.5 rounded-3xl text-sm focus:outline-none"
-              />
-              <Search className="absolute left-4 top-3.5 text-slate-400" size={18} />
-            </div>
             
             {isLoggedIn && (
               <button 
