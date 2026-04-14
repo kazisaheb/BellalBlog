@@ -1450,14 +1450,6 @@ function LoginPage({ login, isLoggedIn }: { login: (email: string, password: str
               Sign In Securely
             </button>
           </form>
-          
-          <div className="mt-8 text-center">
-            <div className="text-xs text-slate-400">
-              Demo credentials provided in the prompt.<br />
-              Email: bellal24hr@gmail.com<br />
-              Password: Q5a3M3%C
-            </div>
-          </div>
         </div>
         
         <div className="text-center mt-8">
