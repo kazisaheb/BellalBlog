@@ -1424,7 +1424,7 @@ function LoginPage({ login, isLoggedIn }: { login: (email: string, password: str
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full px-6 py-4 border border-slate-200 rounded-2xl focus:outline-none focus:border-slate-400 text-base"
-                placeholder="bellal24hr@gmail.com"
+                placeholder="Ex: admin@email.com"
                 required
               />
             </div>
@@ -1436,7 +1436,7 @@ function LoginPage({ login, isLoggedIn }: { login: (email: string, password: str
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="w-full px-6 py-4 border border-slate-200 rounded-2xl focus:outline-none focus:border-slate-400 text-base"
-                placeholder="••••••••"
+                placeholder="Type password"
                 required
               />
             </div>
