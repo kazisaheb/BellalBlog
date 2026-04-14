@@ -1097,38 +1097,7 @@ function HomePage({ posts }: { posts: Post[] }) {
   const featured = publishedPosts[0];
   const recentPosts = publishedPosts.slice(1, 7);
   
-  return (
-    <div>
-      {/* Hero */}
-      <div className="relative h-screen flex items-center justify-center overflow-hidden bg-zinc-950">
-        <div className="absolute inset-0 bg-[radial-gradient(#27272a_1px,transparent_1px)] [background-size:50px_50px] opacity-40"></div>
-        
-        <div className="relative z-10 max-w-4xl mx-auto text-center px-6">
-          <div className="inline-flex items-center gap-2 bg-white/10 text-white text-xs tracking-[2px] px-6 py-3 rounded-3xl mb-6">EST 2023</div>
-          
-          <h1 className="text-[92px] md:text-[120px] leading-none font-semibold tracking-tighter text-white mb-6">
-            BELLAL<br />BLOG
-          </h1>
-          
-          <p className="max-w-md mx-auto text-2xl text-white/70 mb-12">
-            Reflections on technology, design,<br />and living with purpose
-          </p>
-          
-          <Link 
-            to="/blog" 
-            className="inline-flex items-center gap-x-4 group bg-white text-zinc-950 px-10 h-14 rounded-2xl font-medium text-lg hover:bg-amber-200 active:scale-[0.985] transition-all"
-          >
-            Explore the archive 
-            <div className="group-active:rotate-45 transition-transform">↗</div>
-          </Link>
-        </div>
-        
-        <div className="absolute bottom-12 left-1/2 flex flex-col items-center text-white/40 text-xs tracking-widest">
-          SCROLL TO BEGIN
-          <div className="h-px w-8 bg-white/30 my-3"></div>
-        </div>
-      </div>
-      
+  return (     
       {/* Latest Posts */}
       <div className="max-w-7xl mx-auto px-6 pt-20 pb-24">
         <div className="flex items-end justify-between mb-8">
