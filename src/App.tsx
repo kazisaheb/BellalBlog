@@ -1094,18 +1094,7 @@ function HomePage({ posts }: { posts: Post[] }) {
   
   return (     
     <div>
-      <div className="max-w-7xl mx-auto px-6 pt-20 pb-24">
-        <div className="flex items-end justify-between mb-8">
-          <div>
-            <div className="font-mono text-xs text-emerald-500">LATEST ESSAYS</div>
-            <div className="text-6xl font-semibold tracking-tighter">Recent Thoughts</div>
-          </div>
-          <Link to="/blog" className="hidden md:flex items-center gap-3 text-sm group">
-            VIEW ALL 
-            <div className="transition group-hover:translate-x-1">→</div>
-          </Link>
-        </div>
-        
+      <div className="max-w-7xl mx-auto px-6 pt-20 pb-24">       
         {featured && (
           <div className="mb-16">
             <Link to={`/post/${featured.slug}`} className="group">
