@@ -374,7 +374,7 @@ function Footer() {
 
 function PostCard({ post }: { post: Post }) {
   return (
-  <Link to={`/post/${post.slug}`}
+  <Link to={`/post/${post.slug}`}>
     <div className="group bg-white border border-slate-200 rounded-3xl overflow-hidden hover:border-emerald-200 transition-all hover:shadow-xl">
       <div className="relative">
         <img 
